@@ -28,24 +28,13 @@
 define( 'EGM_TEXT_DOMAIN', 'egm' );
 
 require_once( plugin_dir_path( __FILE__ ) . 'class/install.php');
-//require_once( plugin_dir_path( __FILE__ ) . 'class/options.php');
-//require_once( plugin_dir_path( __FILE__ ) . 'class/FormHelper.php');
-//require_once( plugin_dir_path( __FILE__ ) . 'class/settings.php');
 require_once( plugin_dir_path( __FILE__ ) . 'class/menus.php');
 require_once( plugin_dir_path( __FILE__ ) . 'class/shortcodes.php');
 
 add_action('init', 'egm_init');
 
 function egm_init() {
-
-//    $form_helper = new FormHelper();
-
-//    $options = new EGMFormsOptions();
-
     new EGMFormsInstall();
     new EGMFormsMenus();
-//    new EGMFormsSettings();
-//    new EGMFormsBuild();
-//    new EGMFormsAjax;
     new EGMFormsShortcodes();
 }

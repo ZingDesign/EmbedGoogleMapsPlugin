@@ -5,34 +5,21 @@
  * Date: 13/03/14
  * Time: 9:53 AM
  */
-//
-//include_once( trailingslashit(plugin_dir_path( __FILE__ )) . 'FormHelper.php');
 
 class EGMFormsMenus {
 
-    private $form;
-
     function __construct() {
-
 
         if( is_admin() ) {
             add_action( 'admin_init', array( $this, 'egm_init_settings' ) );
 
             add_action( 'admin_menu', array( $this, 'egm_init_menu' ));
-
         }
-
-//        $this->form = new FormHelper(array(
-//            'form_name' => 'egm_options',
-//            'action' => 'options.php',
-//            'is_ajax' => false
-//        ));
 
     }
 
     //The menu page
     function egm_init_menu() {
-        //        add_options_page($page_title, $menu_title, $capability, $menu_slug, $callback);
         add_options_page(
             'Embed Google maps',                // Page title
             'Embed Google maps',                // Menu title
@@ -45,47 +32,47 @@ class EGMFormsMenus {
     function egm_init_settings() {
 
         add_settings_section(
-            'egm-main-section',                 // id
-            'Google map settings',                     // title
-            array( $this, 'egm_section_main' ), // callback
-            'egm_main_menu_page'                // page
+            'egm-main-section',
+            __('Custom Google map settings', 'egm'),
+            array( $this, 'egm_section_main' ),
+            'egm_main_menu_page'
         );
 
         add_settings_field(
-            'egm-google-maps-api-key',              // id
-            'Google Maps API key',              // title
-            array( $this, 'egm_input_api_key' ),// callback
-            'egm_main_menu_page',               // page
-            'egm-main-section'                  // section
+            'egm-google-maps-api-key',
+            __('Google Maps API key', 'egm'),
+            array( $this, 'egm_input_api_key' ),
+            'egm_main_menu_page',
+            'egm-main-section'
         );
 
         add_settings_field(
-            'egm-address',              // id
-            'Your address',              // title
-            array( $this, 'egm_input_address' ),// callback
-            'egm_main_menu_page',               // page
-            'egm-main-section'                  // section
+            'egm-address',
+            __('Your address', 'egm'),
+            array( $this, 'egm_input_address' ),
+            'egm_main_menu_page',
+            'egm-main-section'
         );
 
         add_settings_field(
-            'egm-map-width',                        // id
-            'Map width (pixels)',                        // title
-            array( $this, 'egm_input_map_width' ),// callback
-            'egm_main_menu_page',               // page
-            'egm-main-section'                  // section
+            'egm-map-width',
+            __('Map width (pixels)', 'egm'),
+            array( $this, 'egm_input_map_width' ),
+            'egm_main_menu_page',
+            'egm-main-section'
         );
 
         add_settings_field(
-            'egm-map-height',                        // id
-            'Map height (pixels)',               // title
-            array( $this, 'egm_input_map_height' ),// callback
-            'egm_main_menu_page',               // page
-            'egm-main-section'                  // section
+            'egm-map-height',
+            __('Map height (pixels)', 'egm'),
+            array( $this, 'egm_input_map_height' ),
+            'egm_main_menu_page',
+            'egm-main-section'
         );
 
         add_settings_field(
             'egm-info-window-content',
-            'Info window content',
+            __('Info window content', 'egm'),
             array( $this, 'egm_input_info_window_content' ),
             'egm_main_menu_page',
             'egm-main-section'
@@ -93,57 +80,59 @@ class EGMFormsMenus {
 
         add_settings_field(
             'egm-map-style',
-            'Map style<br/>(Paste Javascript style array from <a href="http://snazzymaps.com/" target="_blank">Snazzy Maps</a>)',
+            sprintf(__('Map style%1$sPaste Javascript style array from %2$sSnazzy Maps%3$s', 'egm'), '<br/><em>', '<a href="http://snazzymaps.com/" target="_blank">', '</a></em>'),
             array( $this, 'egm_input_style' ),
             'egm_main_menu_page',
             'egm-main-section'
         );
 
         register_setting(
-            'egm_main_menu_page',   // option group
+            'egm_main_menu_page',       // option group
             'egm-google-maps-api-key',  // option name
-            'esc_html'              // sanitize callback
+            'esc_html'                  // sanitize callback
         );
 
         register_setting(
-            'egm_main_menu_page',   // option group
-            'egm-address',  // option name
-            'esc_html'              // sanitize callback
+            'egm_main_menu_page',
+            'egm-address',
+            'esc_html'
         );
 
         register_setting(
-            'egm_main_menu_page',   // option group
-            'egm-map-width',  // option name
-            'esc_html'              // sanitize callback
+            'egm_main_menu_page',
+            'egm-map-width',
+            'esc_html'
         );
 
         register_setting(
-            'egm_main_menu_page',   // option group
-            'egm-map-height',  // option name
-            'esc_html'              // sanitize callback
+            'egm_main_menu_page',
+            'egm-map-height',
+            'esc_html'
         );
 
         register_setting(
-            'egm_main_menu_page',   // option group
-            'egm-info-window-content',  // option name
-            'esc_attr'              // sanitize callback
+            'egm_main_menu_page',
+            'egm-info-window-content',
+            'esc_attr'
         );
 
 
         register_setting(
-            'egm_main_menu_page',   // option group
-            'egm-map-style',  // option name
-            'sanitize_text_field'              // sanitize callback
+            'egm_main_menu_page',
+            'egm-map-style',
+            'sanitize_text_field'
         );
 
     }
 
     function egm_section_main() {
-//        echo "<h2>Main options</h2>\n";
+//        echo "<h1>" . __('Zing Design - Embed custom Google maps', 'egm') . "</h1>\n";
+
     }
 
     function egm_input_api_key() {
         echo '<input class="egm-text" type="text" id="egm-google-maps-api-key" name="egm-google-maps-api-key" value="'.get_option('egm-google-maps-api-key').'"/>';
+        echo '<br/><a href="http://www.zingdesign.com/how-to-build-a-custom-google-map-for-your-website/" target="_blank">' . __('How do I get an API key?', 'egm') . '</a>';
     }
 
     function egm_input_address() {
@@ -159,7 +148,7 @@ class EGMFormsMenus {
     }
 
     function egm_input_info_window_content() {
-        echo '<input class="egm-text" type="text" id="egm-info-window-content" name="egm-info-window-content" value="'.get_option('egm-info-window-content').'"/>';
+        echo '<textarea class="egm-text" type="text" id="egm-info-window-content" name="egm-info-window-content" rows="5">'.get_option('egm-info-window-content').'</textarea>';
     }
 
     function egm_input_style() {
@@ -167,9 +156,8 @@ class EGMFormsMenus {
     }
 
     function egm_menu_options() {
-//        $html = '';
 
-        echo '<form method="POST" action="options.php">';
+        echo '<form id="egm-form" method="POST" action="options.php">';
 
         settings_fields( 'egm_main_menu_page' );
 
@@ -179,14 +167,21 @@ class EGMFormsMenus {
 
         echo '</form>';
 
-        echo "<h3>Shortcode:</h3>\n";
+        echo "<h3>" . __('Shortcode:', 'egm') . "</h3>\n";
 
-        echo "<p>Paste this shortcode into your post:</p>\n";
+        echo "<p>" . __('Paste this shortcode into your post:', 'egm') . "</p>\n";
 
-        echo "<pre>[custom_google_map]</pre>\n";
+        echo "<pre class=\"egm-shortcode-output\">[custom_google_map]</pre>\n";
 
+        echo "<p><strong>". __('Allowed attributes:', 'egm') . "</strong></p>\n";
+        echo "<ul class=\"bullet-list\">\n";
+        echo "<li>class</li>\n";
+        echo "<li>address</li>\n";
+        echo "<li>width</li>\n";
+        echo "<li>height</li>\n";
+        echo "</ul>\n";
 
-//        echo $html;
+        echo '<a href="http://zingdesign.com" target="_blank"><img src="'.plugins_url('assets/images/zing-design-logo.png', dirname(__FILE__)).'" alt="Zing Design" width="200" height="64" /></a>'."\n";
     }
 
 

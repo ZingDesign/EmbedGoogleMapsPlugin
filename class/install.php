@@ -22,8 +22,7 @@ class EGMFormsInstall {
         // Custom admin styles
         wp_enqueue_style( 'egm-admin', plugins_url( '/assets/css/egm-admin.css', dirname(__FILE__) ) );
 
-        //Custom admin scripts
-//        wp_enqueue_script( 'egm-form-builder' );
+        // Custom admin scripts
         wp_enqueue_script(
             'egm-admin-script',
             plugins_url( '/assets/js/egm-admin.js', dirname(__FILE__) ),
@@ -43,15 +42,6 @@ class EGMFormsInstall {
                 array(),
                 '3.15'
             );
-
-//            wp_enqueue_script(
-//                'egm-gmaps',
-//                plugins_url( '/assets/js/vendor/gmaps.min.js', dirname(__FILE__) ),
-//                array('jquery', 'google-maps-js-api'),
-//                '0.4.11',
-//                true
-//            );
-
 
             wp_enqueue_script(
                 'egm-client-script',

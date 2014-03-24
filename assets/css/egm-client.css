@@ -5,6 +5,10 @@
   padding: 0;
 }
 /* line 6, ../scss/egm-client.scss */
+#egm-map img {
+  max-width: initial;
+}
+/* line 10, ../scss/egm-client.scss */
 #egm-map.js-on {
   width: 100%;
 }

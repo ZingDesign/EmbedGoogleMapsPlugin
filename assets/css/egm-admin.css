@@ -4,3 +4,15 @@
     width: 50%;
   }
 }
+/* line 7, ../scss/egm-admin.scss */
+.bullet-list {
+  list-style: disc inside;
+}
+
+/* line 11, ../scss/egm-admin.scss */
+.egm-shortcode-output {
+  background-color: #FFF;
+  padding: 10px;
+  border: 1px solid #DDD;
+  display: inline-block;
+}

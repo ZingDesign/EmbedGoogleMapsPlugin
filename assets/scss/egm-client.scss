@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
 
+  img {
+    max-width: initial;
+  }
+
   &.js-on {
     width: 100%;
   }

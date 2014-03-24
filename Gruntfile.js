@@ -35,12 +35,10 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-//                ,sourceMap: true
             },
             egm: {
                 files: {
                     'assets/dist/js/egm-client.min.js': ['assets/js/egm-client.js']
-//                    ,'assets/dist/js/vendor/gmaps.min.js' : ['assets/js/vendor/gmaps.js']
                 }
             }
         },
@@ -77,6 +75,4 @@ module.exports = function(grunt) {
 
     // default task.
     grunt.registerTask('default', ['uglify', 'compass']);
-//    grunt.loadNpmTasks('grunt-concurrent');
-//    grunt.registerTask('default', ['concurrent:target1', 'concurrent:target2']);
 };
