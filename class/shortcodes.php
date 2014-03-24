@@ -30,11 +30,11 @@ class EGMFormsShortcodes {
         $style = ' style="';
 
         if( $width )
-            $style .= 'width:' . $width . 'px;';
+            $style .= 'width:' . str_replace( 'px', '', $width ) . 'px;';
         if( $height )
-            $style .= 'height:' . $height . 'px;';
+            $style .= 'height:' . str_replace( 'px', '', $height ) . 'px;';
         if( $margin_bottom )
-            $style .= 'margin-bottom:' . $margin_bottom . 'px;';
+            $style .= 'margin-bottom:' . str_replace( 'px', '', $margin_bottom ) . 'px;';
 
         $style .= '"';
 
