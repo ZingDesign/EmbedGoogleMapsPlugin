@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Embed Google Maps
- * Plugin URI: http://zingdesign.com
+ * Plugin URI: https://github.com/ZingDesign/EmbedGoogleMapsPlugin
  * Description: Embed Google maps in posts using shortcodes
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Samuel Holt
  * Author URI: http://zingdesign.com
  * License: GPL2

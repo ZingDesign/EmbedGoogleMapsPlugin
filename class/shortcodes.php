@@ -12,7 +12,7 @@ class EGMFormsShortcodes {
     }
 
     function egm_display_map($atts) {
-        $width = $height = $address = $address_url = $id = $class = '';
+        $width = $height = $address = $address_url = $id = $class = $margin_bottom ='';
 
         extract( shortcode_atts( array(
             'id'            => 'egm-map',
@@ -21,6 +21,7 @@ class EGMFormsShortcodes {
             'address_url'   => urlencode(get_option('egm-address')),
             'width'         => get_option( 'egm-map-width' ),
             'height'        => get_option( 'egm-map-height' ),
+            'margin_bottom' => false
         ), $atts ) );
 
         if( $address && ! $address_url ) {
@@ -29,9 +30,11 @@ class EGMFormsShortcodes {
         $style = ' style="';
 
         if( $width )
-            $style .= 'width:'.$width.'px;';
+            $style .= 'width:' . $width . 'px;';
         if( $height )
-            $style.= 'height:'.$height.'px;';
+            $style .= 'height:' . $height . 'px;';
+        if( $margin_bottom )
+            $style .= 'margin-bottom:' . $margin_bottom . 'px;';
 
         $style .= '"';
 
