@@ -31,7 +31,7 @@ class EGMFormsShortcodes {
         if( $width )
             $style .= 'width:'.$width.'px;';
         if( $height )
-            $height.= 'height:'.$height.'px;';
+            $style.= 'height:'.$height.'px;';
 
         $style .= '"';
 
@@ -41,9 +41,13 @@ class EGMFormsShortcodes {
 
         if( $address && $address_url && $width && $height ) {
 
+//            $key = get_option('egm-google-maps-api-key');
+
+            $image_url = 'http://maps.googleapis.com/maps/api/staticmap?center='.$address_url.'&zoom=14&size='.$width.'x'.$height.'&markers=color:red|'.$address_url.'&sensor=true';
+
             $html .= '<a href="https://www.google.com/maps/place/'.$address_url.'" target="_blank">'."\n";
 
-            $html .= '<img src="http://maps.googleapis.com/maps/api/staticmap?center='.$address_url.'&zoom=14&size='.$width.'x'.$height.'&markers=color:red&sensor=true" alt="Static fallback image showing the location of '.$address.'." width="'.$width.'" height="'.$height.'" />'."\n";
+            $html .= '<img src="'.$image_url.'" alt="Static fallback image showing the location of '.$address.'." width="'.$width.'" height="'.$height.'" />'."\n";
 
             $html .= '</a>'."\n";
 
