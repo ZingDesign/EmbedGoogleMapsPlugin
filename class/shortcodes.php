@@ -14,8 +14,6 @@ class EGMFormsShortcodes {
     function egm_display_map($atts) {
         $width = $height = $address = $address_url = $id = $class = '';
 
-        $atts = array_map( 'strip_tags', $atts );
-
         extract( shortcode_atts( array(
             'id'            => 'egm-map',
             'class'         => 'egm-map',
@@ -28,10 +26,18 @@ class EGMFormsShortcodes {
         if( $address && ! $address_url ) {
             $address_url = urlencode( $address );
         }
+        $style = ' style="';
+
+        if( $width )
+            $style .= 'width:'.$width.'px;';
+        if( $height )
+            $height.= 'height:'.$height.'px;';
+
+        $style .= '"';
 
         $html = '';
 
-        $html .= '<div id="'.$id.'" class="'.$class.'">'."\n";
+        $html .= sprintf('<div id="%1$s" class="%2$s"%3$s>', $id, $class, $style)."\n";
 
         if( $address && $address_url && $width && $height ) {
 

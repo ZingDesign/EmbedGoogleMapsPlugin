@@ -3,12 +3,26 @@
   margin: 0;
   padding: 0;
 
+  // Fix responsive images bug
   img {
     max-width: initial;
   }
 
-  &.js-on {
-    width: 100%;
+//  &.js-on {
+//    width: 100%;
+//  }
+
+  .egm-info-window-image {
+    margin: 0 10px 10px 0;
+    float: left;
+    width: 70px;
+    height: 70px;
+  }
+
+  .gm-style-iw {
+    p {
+      margin: 0;
+    }
   }
 
 }

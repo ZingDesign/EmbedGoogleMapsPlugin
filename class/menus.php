@@ -71,6 +71,14 @@ class EGMFormsMenus {
         );
 
         add_settings_field(
+            'egm-info-window-image',
+            __('Info window image', 'egm'),
+            array( $this, 'egm_input_info_window_image' ),
+            'egm_main_menu_page',
+            'egm-main-section'
+        );
+
+        add_settings_field(
             'egm-info-window-content',
             __('Info window content', 'egm'),
             array( $this, 'egm_input_info_window_content' ),
@@ -112,6 +120,12 @@ class EGMFormsMenus {
 
         register_setting(
             'egm_main_menu_page',
+            'egm-info-window-image',
+            'esc_url'
+        );
+
+        register_setting(
+            'egm_main_menu_page',
             'egm-info-window-content',
             'esc_attr'
         );
@@ -145,6 +159,14 @@ class EGMFormsMenus {
 
     function egm_input_map_height() {
         echo '<input class="egm-text" type="number" id="egm-map-height" name="egm-map-height" value="'.get_option('egm-map-height').'"/>';
+    }
+
+    function egm_input_info_window_image() {
+        echo '<input id="upload_image" type="text" size="36" name="egm-info-window-image" value="'.get_option('egm-info-window-image').'" />'."\n";
+        echo '<input id="upload_image_button" class="button" type="button" value="Insert Image" />'."\n";
+        echo '<br /><em><small>';
+        echo __('Enter a URL or insert an image', 'egm')."\n";
+        echo '</small></em>'."\n";
     }
 
     function egm_input_info_window_content() {

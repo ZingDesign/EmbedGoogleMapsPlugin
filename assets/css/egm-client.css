@@ -4,11 +4,18 @@
   margin: 0;
   padding: 0;
 }
-/* line 6, ../scss/egm-client.scss */
+/* line 7, ../scss/egm-client.scss */
 #egm-map img {
   max-width: initial;
 }
-/* line 10, ../scss/egm-client.scss */
-#egm-map.js-on {
-  width: 100%;
+/* line 15, ../scss/egm-client.scss */
+#egm-map .egm-info-window-image {
+  margin: 0 10px 10px 0;
+  float: left;
+  width: 70px;
+  height: 70px;
+}
+/* line 23, ../scss/egm-client.scss */
+#egm-map .gm-style-iw p {
+  margin: 0;
 }

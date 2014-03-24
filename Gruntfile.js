@@ -38,7 +38,8 @@ module.exports = function(grunt) {
             },
             egm: {
                 files: {
-                    'assets/dist/js/egm-client.min.js': ['assets/js/egm-client.js']
+                    'assets/dist/js/egm-client.min.js': ['assets/js/egm-client.js'],
+                    'assets/dist/js/egm-admin.min.js': ['assets/js/egm-admin.js']
                 }
             }
         },
