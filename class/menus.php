@@ -201,6 +201,7 @@ class EGMFormsMenus {
         echo "<li>address</li>\n";
         echo "<li>width</li>\n";
         echo "<li>height</li>\n";
+        echo "<li>margin_bottom</li>\n";
         echo "</ul>\n";
 
         echo '<a href="http://zingdesign.com" target="_blank"><img src="'.plugins_url('assets/images/zing-design-logo.png', dirname(__FILE__)).'" alt="Zing Design" width="200" height="64" /></a>'."\n";
